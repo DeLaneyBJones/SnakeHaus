@@ -7,6 +7,7 @@ import { ReptileData } from '../providers/reptile-data';
 import { NavController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 @Component({
   selector: 'app-add-reptile-modal',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-reptile-modal.page.scss'],
 })
 export class AddReptileModalPage implements OnInit {
+  name: string = "";
 
   reptiles: Array<Object> = [];
   searchQuery: string = '';
@@ -54,5 +56,11 @@ export class AddReptileModalPage implements OnInit {
     this.reptileData.getReptiles().then(theResult => {
       this.reptiles = theResult;
     })
+  }
+
+  sendForm()
+  {
+    var input = document.getElementById('name'); 
+    console.log(input);
   }
 }

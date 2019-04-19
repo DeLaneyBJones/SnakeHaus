@@ -32,15 +32,19 @@ export class ObservationData {
     }
 
     getObservations(snakeName: string)
-    {    
+    {   
+        var observationInformation: Array<Object> = []; 
+        var count = 0;
         for(var i = 0; i < this.data.length; i++)
         {
             if(this.data[i].SnakeName == snakeName)
             {
-                return this.data[i];
+                observationInformation[count] = this.data[i];
+                count++;
             }
         }
-        return "Not found!";
+        return observationInformation;
+
     }
 
     //Will we even need this information?

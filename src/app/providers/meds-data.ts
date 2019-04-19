@@ -33,6 +33,7 @@ export class MedsData {
 
     getMeds(snakeName: string)
     {
+        var medication: Object = null;
         for(var i = 0; i < this.data.length; i++)
         {
             if(this.data[i].SnakeName == snakeName)
@@ -41,23 +42,6 @@ export class MedsData {
             }
         }
         return "Not found!";
-    }
-
-    getFilteredMeds(queryString)
-    {
-        //Will I even need this?
-        // return this.load().then(Foods => {
-        //     let theFilteredFoods: any = [];
-
-        //     for (let food of Foods)
-        //     {
-        //         if(food.Food.toLowerCase().indexOf(queryString.toLowerCase())> -1)
-        //         {
-        //             theFilteredFoods.push(food);
-        //         }
-        //     }
-        //     return theFilteredFoods;
-        // });
     }
 
     constructor(public http: Http){}

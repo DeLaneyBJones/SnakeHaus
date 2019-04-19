@@ -22,7 +22,7 @@ export class ReptileDetailsPage {
   feedInfo: Object;
   feedSchedule: Object;
   medsInfo: Object;
-  observationInfo: Object;
+  observationInfo: Array<Object>;
 
   feedSchedInfo: Boolean;
   observations: Boolean;

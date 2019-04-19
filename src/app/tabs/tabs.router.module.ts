@@ -21,7 +21,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../settings/settings.module#SettingsPageModule'
+            loadChildren: '../authentication/authentication.module#AuthenticationPageModule'
           }
         ]
       },
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/parks',
+    redirectTo: '/tabs/reptiles',
     pathMatch: 'full'
   }
 ];

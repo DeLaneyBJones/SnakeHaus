@@ -19,10 +19,12 @@ import { FeedSchedule } from './providers/feed-schedule';
 import { MedsData} from './providers/meds-data';
 import { ObservationData } from './providers/observations-data';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, AddReptileModalPage, UpdateReptileModalPage],
   entryComponents: [AddReptileModalPage, UpdateReptileModalPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,

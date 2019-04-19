@@ -17,15 +17,13 @@ export class ReptileListPage implements OnInit {
 
   constructor(public navCtrl: NavController, public reptileData: ReptileData, public router: Router) {
     reptileData.getReptiles().then(theResult => {
-      this.reptiles = theResult;;
+      this.reptiles = theResult;
     })
    }
 
    goReptileDetails(theReptileData){
      let url = './tabs/details/' + theReptileData.SnakeName;
      this.router.navigate([url]); 
-     console.log("This is the reptile data...");
-     console.log(theReptileData);
    }
 
    getReptiles(event)
