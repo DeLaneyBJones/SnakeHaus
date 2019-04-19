@@ -26,6 +26,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'settings2',
+        children: [
+          {
+            path: '',
+            loadChildren: '../settings/settings.module#SettingsPageModule'
+          }
+        ]
+      },
+      {
         path: 'details/:id',
         children: [{
           path: '',

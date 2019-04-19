@@ -20,6 +20,7 @@ import { MedsData} from './providers/meds-data';
 import { ObservationData } from './providers/observations-data';
 
 import { FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, AddReptileModalPage, UpdateReptileModalPage],
@@ -32,7 +33,7 @@ import { FormsModule } from '@angular/forms';
     ReptileData,
     FeedData,
     FeedSchedule,
-    MedsData, ObservationData
+    MedsData, ObservationData, NgForm
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-authentication',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationPage implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, public navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -17,5 +20,8 @@ export class AuthenticationPage implements OnInit {
     //This is where I need to verify the data...
     var username: string = document.getElementById("name").nodeValue;
     console.log(username);
+    //I need to add the actual verification here before navigation
+    let url = './tabs/settings2/';
+    this.router.navigate([url]); 
   }
 }
