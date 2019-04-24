@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReptileData } from '../providers/reptile-data'
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-//import { ModalPage } from '../modal/modal.page';
-import { AddReptileModalPage } from '../add-reptile-modal/add-reptile-modal.page';
+import { AddReptileModalPage } from '../app/add-reptile-modal/add-reptile-modal.page';
 import { UpdateReptileModalPage } from '../update-reptile-modal/update-reptile-modal.page';
 
 @Component({

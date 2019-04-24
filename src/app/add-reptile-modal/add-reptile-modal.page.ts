@@ -6,11 +6,6 @@ import { FeedData } from '../providers/feed-data';
 import { FeedSchedule } from '../providers/feed-schedule';
 import { MedsData } from '../providers/meds-data';
 import { ObservationData } from '../providers/observations-data';
-import { NavParams } from '@ionic/angular';
-import { NavController } from '@ionic/angular';
-
-import { Router } from '@angular/router';
-import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 import { NgForm } from '@angular/forms';
 
 @Component({
