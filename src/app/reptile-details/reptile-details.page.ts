@@ -38,6 +38,8 @@ export class ReptileDetailsPage {
     this.feedSchedule = feedSched.getFeedSchedule(name);
     this.medsInfo = medsData.getMeds(name);
     this.observationInfo = obsData.getObservations(name);
+    console.log("this.observationInfo: ");
+    console.log(this.observationInfo);
 
     this.feedSchedInfo = false;    
     this.observations = false;

@@ -3,19 +3,20 @@
       <ion-title>Update a Reptile</ion-title>
       <ion-button slot="end" (click)="dismiss()" color='secondary'>close</ion-button>
     </ion-toolbar>
-    <ion-toolbar color='primary'>
-      <ion-searchbar (ionInput)="getReptiles($event)" (ionClear)="resetList($event)">
-      </ion-searchbar>
-    </ion-toolbar>
   </ion-header>
   
   <ion-content>
-    <ion-list>
+    <p>This section needs to send the selected data to update the database</p>
+    <ion-list *ngIf="hasReptile == false">
+      <ion-toolbar color='primary' *ngIf="hasReptile == false">
+        <ion-searchbar (ionInput)="getReptiles($event)" (ionClear)="resetList($event)">
+        </ion-searchbar>
+      </ion-toolbar>
       <ion-virtual-scroll [items]="reptiles" [headerFn]="customHeaderFn">
         <ion-item-divider *virtualHeader='let header'>
           {{header}}
         </ion-item-divider>
-        <ion-item *virtualItem="let reptile" (click)="goReptileDetails(reptile)" detail-push>
+        <ion-item *virtualItem="let reptile" (click)="UpdateReptileDetails(reptile)" detail-push>
           <ion-thumbnail slot="start" *ngIf='reptile.Picture != null'>
             <ion-img src="reptile.Picture"></ion-img>
           </ion-thumbnail>
@@ -27,9 +28,129 @@
             <li class="clear"><h2>{{reptile.SnakeName}}</h2></li>
             <li class="clear"><p>{{reptile.Species}}</p></li>
           </ul>
-            
-            
+              
         </ion-item>
         </ion-virtual-scroll>
+    </ion-list>
+    <ion-list *ngIf="hasReptile">
+      <h1>Update Reptile Details</h1>
+      <form>
+          <h2>Basic Information</h2>
+          <ion-item>
+            <ion-label>Name: </ion-label>
+            <ion-input type="text" name="name" [(ngModel)]="reptiles.SnakeName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Location: </ion-label>
+            <ion-input type="text" name="location" [(ngModel)]="reptiles.Location"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Species: </ion-label>
+            <ion-input type="text" name="species" [(ngModel)]="reptiles.Species"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Morph:</ion-label>
+            <ion-input type="text" name="morph" [(ngModel)]="reptiles.Morph"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>DoB:</ion-label>
+            <ion-input type="date" name="DoB" [(ngModel)]="reptiles.BirthDay"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Handling:</ion-label>
+            <ion-input type="text" name="handling" [(ngModel)]="reptiles.Handling"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Acquired:</ion-label>
+            <ion-input type="date" name="acquired" [(ngModel)]="reptiles.Acquired"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Scale Ventral:</ion-label>
+            <ion-input type="text" name="scaleVentral" [(ngModel)]="reptiles.ScaleVentral"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Scale Mid:</ion-label>
+            <ion-input type="text" name="scaleMid" [(ngModel)]="reptiles.ScaleMid"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Scale Sub Cauudal:</ion-label>
+            <ion-input type="text" name="scaleSubCauudal" [(ngModel)]="reptiles.ScaleSubCauudal"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Saddles:</ion-label>
+            <ion-input type="text" name="saddles" [(ngModel)]="reptiles.Saddles"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Scale Count 5:</ion-label>
+            <ion-input type="text" name="scaleCount5" [(ngModel)]="reptiles.Saddles"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Picture: </ion-label>
+            <ion-input type="image" name="picture" [(ngModel)]="reptiles.Picture"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Active:</ion-label>
+            <ion-input type="text" name="active" [(ngModel)]="reptiles.Active"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adopter:</ion-label>
+            <ion-input type="text" name="adopter" [(ngModel)]="reptiles.Adopter"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adoption Date:</ion-label>
+            <ion-input type="date" name="adoptionDate" [(ngModel)]="reptiles.AdoptionDate"></ion-input>
+          </ion-item>
+    
+          <h2>Observations</h2>
+          <ion-list>
+            <ion-virtual-scroll [items]="observations" [headerFn]="customHeaderFn">
+              <ion-item *virtualItem="let observation">
+                <ion-label>Date: </ion-label>
+                <ion-input type="date" name="obDate" [(ngModel)]="observation.O_Date"></ion-input>
+                <ion-label>Observation: </ion-label>
+                <ion-input type="text" name="obData" [(ngModel)]="observation.Observation"></ion-input>
+              </ion-item>
+            </ion-virtual-scroll>
+          </ion-list>
+
+          <h2>Feeding</h2>
+          <ion-item>
+            <ion-label>Food: </ion-label>
+            <ion-input type="text" name="feedFood" [(ngModel)]="feed.Food"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Frequency: </ion-label>
+            <ion-input type="text" name="title" [(ngModel)]="feed.Frequency"></ion-input>
+          </ion-item>
+    
+          <h2>Feeding Schedule</h2>
+          <ion-item>
+            <ion-label>Date: </ion-label>
+            <ion-input type="date" name="schedDate" [(ngModel)]="feedSchedule.F_Date"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Food: </ion-label>
+            <ion-input type="text" name="schedFood" [(ngModel)]="feedSchedule.Food"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Comment: </ion-label>
+            <ion-input type="text" name="schedComment" [(ngModel)]="feedSchedule.Comment"></ion-input>
+          </ion-item>
+
+          <h2>Medications</h2>
+          <ion-item>
+            <ion-label>Last Dose: </ion-label>
+            <ion-input type="date" name="rxDate" [(ngModel)]="meds.RxDate"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Rx: </ion-label>
+            <ion-input type="text" name="rx" [(ngModel)]="meds.Rx"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Next Dose: </ion-label>
+            <ion-input type="text" name="nextRx" [(ngModel)]="meds.NextRx"></ion-input>
+          </ion-item>
+        </form>
+        <ion-button type="submit" (click)="sendForm()"><ion-label>Submit</ion-label></ion-button>
     </ion-list>
   </ion-content>

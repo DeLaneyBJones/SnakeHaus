@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'add-reptile-modal', loadChildren: './add-reptile-modal/add-reptile-modal.module#AddReptileModalPageModule' },
   { path: 'update-reptile-modal', loadChildren: './update-reptile-modal/update-reptile-modal.module#UpdateReptileModalPageModule' },
   { path: 'authentication', loadChildren: './authentication/authentication.module#AuthenticationPageModule' },
+  { path: 'schedule-modal', loadChildren: './schedule-modal/schedule-modal.module#ScheduleModalPageModule' },
 ];
 @NgModule({
   imports: [

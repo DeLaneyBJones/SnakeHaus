@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 
-
 import { ReptileData } from '../providers/reptile-data';
-import { NavController } from '@ionic/angular';
-
-import { Router } from '@angular/router';
-import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
+import { FeedData } from '../providers/feed-data';
+import { FeedSchedule } from '../providers/feed-schedule';
+import { MedsData } from '../providers/meds-data';
+import { ObservationData } from '../providers/observations-data';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -20,8 +18,12 @@ export class AddReptileModalPage implements OnInit {
 
   reptiles: Array<Object> = [];
   searchQuery: string = '';
+  feed: Array<Object> = [];
+  feedSchedule: Array<Object> = [];
+  meds: Array<Object> = [];
+  observations: Array<Object> = [];
 
-  constructor(navParams: NavParams, public modalController: ModalController, public reptileData: ReptileData, public thisForm: NgForm) {
+  constructor(public feedData: FeedData, public feedSched: FeedSchedule, public medsData: MedsData, public obsData: ObservationData, public modalController: ModalController, public reptileData: ReptileData, public thisForm: NgForm) {
     reptileData.getReptiles().then(theResult => {
       this.reptiles = theResult;
     })
@@ -88,7 +90,14 @@ export class AddReptileModalPage implements OnInit {
     var schedDate = data.get('schedDate') as string;
     var schedFood = data.get('schedFood') as string;
     var schedComment = data.get('schedComment') as string;
+    var rxDate = data.get('rxDate') as string;
+    var rx = data.get('rx') as string;
+    var nextRx = data.get('nextRx') as string;
 
     this.reptileData.send(name, location, species, morph, DoB, handling, acquired, scaleVentral, scaleMid, scaleSubCauudal, saddles, scaleCount5, picture, active, adopter, adoptionDate);
+    this.obsData.send(name, obDate, obData);
+    this.feedData.send(name, feedFood, frequency);
+    this.feedSched.send(name, schedDate, schedFood, schedComment);
+    this.medsData.send(name,rxDate, rx, nextRx);
   }
 }

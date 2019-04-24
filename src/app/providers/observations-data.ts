@@ -44,7 +44,6 @@ export class ObservationData {
             }
         }
         return observationInformation;
-
     }
 
     //Will we even need this information?
@@ -64,5 +63,30 @@ export class ObservationData {
     //     });
     // }
 
-    constructor(public http: Http){}
+    constructor(public http: Http){
+        this.load();
+    }
+
+    send(snakeName: string,date: string, observation: string)
+    {
+        var body = {
+            "O_Id" : null,
+            "SnakeName" : snakeName,
+            "O_Date" : date,
+            "Observation" : observation,
+        };
+        console.log(body);
+        if(this.data)
+        {
+            return Promise.resolve(this.data);
+        }
+        return new Promise(resolve => {
+            this.http.post('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/observation', body)
+            .map(res => res.json())
+            .subscribe(data => {
+                this.data = data.records;
+                resolve(this.data);
+            });
+        });
+    } 
 }

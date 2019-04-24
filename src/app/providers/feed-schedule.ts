@@ -26,9 +26,22 @@ export class FeedSchedule {
     
     getFeedSchedules()
     {
-        return this.load().then(data => {
-            return data;
-        });
+        return this.data;
+    }
+
+    getAllFeedSchedulesOnDate(date: string)
+    {
+        var count = 0;
+        var allData: Array<Object> = [];
+        for(var i = 0; i < this.data.length; i++)
+        {
+            if(this.data[i].F_Date == date)
+            {
+                allData[count] = this.data[i].SnakeName;
+                count++;
+            }
+        }
+        return allData;
     }
 
     getFeedSchedule(name: string)
@@ -43,5 +56,31 @@ export class FeedSchedule {
         return "Not found!";
     }
 
-    constructor(public http: Http){}
+    constructor(public http: Http){
+        this.load();
+    }
+
+    send(snakeName: string, date: string, food: string, comment: string)
+    {
+        var body = {
+            "FS_Id" : null,
+            "SnakeName" : snakeName,
+            "F_Date" : date,
+            "Food" : food,
+            "Comment" : comment
+        };
+        console.log(body);
+        if(this.data)
+        {
+            return Promise.resolve(this.data);
+        }
+        return new Promise(resolve => {
+            this.http.post('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/observation', body)
+            .map(res => res.json())
+            .subscribe(data => {
+                this.data = data.records;
+                resolve(this.data);
+            });
+        });
+    } 
 }

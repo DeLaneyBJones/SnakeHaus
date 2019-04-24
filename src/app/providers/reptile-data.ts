@@ -43,6 +43,7 @@ export class ReptileData {
             "Adopter" : adopter,
             "AdoptionDate" : adoptionDate
         };
+        console.log(body);
         if(this.data)
         {
             return Promise.resolve(this.data);
@@ -94,5 +95,7 @@ export class ReptileData {
         });
     }
 
-    constructor(public http: Http){}
+    constructor(public http: Http){
+        this.load();
+    }
 }

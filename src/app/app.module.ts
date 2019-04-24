@@ -21,10 +21,11 @@ import { ObservationData } from './providers/observations-data';
 
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { ScheduleModalPage } from './schedule-modal/schedule-modal.page';
 
 @NgModule({
-  declarations: [AppComponent, AddReptileModalPage, UpdateReptileModalPage],
-  entryComponents: [AddReptileModalPage, UpdateReptileModalPage],
+  declarations: [AppComponent, AddReptileModalPage, UpdateReptileModalPage, ScheduleModalPage],
+  entryComponents: [AddReptileModalPage, UpdateReptileModalPage, ScheduleModalPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpModule, FormsModule],
   providers: [
     StatusBar,

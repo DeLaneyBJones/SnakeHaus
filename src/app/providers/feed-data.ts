@@ -26,9 +26,17 @@ export class FeedData {
     
     getFeeds()
     {
-        return this.load().then(data => {
-            return data;
-        });
+        return this.data;
+    }
+
+    getAllFeedsByName(name: Array<Object>)
+    {
+        var returning: Array<Object> = [];
+        for(var i = 0; i < name.length; i++)
+        {
+            returning[i] = this.getFeed(name[i].toString());
+        }
+        return returning;
     }
 
     getFeed(snakeName: string)
@@ -59,5 +67,30 @@ export class FeedData {
         });
     }
 
-    constructor(public http: Http){}
+    constructor(public http: Http){
+        this.load();
+    }
+
+    send(snakeName: string, food: string, frequency: string)
+    {
+        var body = {
+            "F_Id" : null,
+            "SnakeName" : snakeName,
+            "Food" : food,
+            "Frequency" : frequency,
+        };
+        console.log(body);
+        if(this.data)
+        {
+            return Promise.resolve(this.data);
+        }
+        return new Promise(resolve => {
+            this.http.post('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/observation', body)
+            .map(res => res.json())
+            .subscribe(data => {
+                this.data = data.records;
+                resolve(this.data);
+            });
+        });
+    } 
 }
