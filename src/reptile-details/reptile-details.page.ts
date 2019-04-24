@@ -10,7 +10,6 @@ import { ObservationData } from '../providers/observations-data';
 
 
 
-
 @Component({
   selector: 'app-reptile-details',
   templateUrl: './reptile-details.page.html',
@@ -30,6 +29,7 @@ export class ReptileDetailsPage {
   feed: Boolean;
   basicInfo: Boolean;
   medication: Boolean;
+  //observations
 
   constructor(public reptileData: ReptileData, public feedData: FeedData, public feedSched: FeedSchedule, public medsData: MedsData, public obsData: ObservationData, public route: ActivatedRoute) {
     var name = this.route.snapshot.paramMap.get('id');
@@ -38,15 +38,12 @@ export class ReptileDetailsPage {
     this.feedSchedule = feedSched.getFeedSchedule(name);
     this.medsInfo = medsData.getMeds(name);
     this.observationInfo = obsData.getObservations(name);
-    console.log("this.observationInfo: ");
-    console.log(this.observationInfo);
 
     this.feedSchedInfo = false;    
     this.observations = false;
     this.feed = false;
     this.basicInfo = false;
     this.medication = false;
-
   }
 
 }

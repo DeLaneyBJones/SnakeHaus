@@ -131,5 +131,4 @@ export class UpdateReptileModalPage implements OnInit {
     this.feedSched.send(name, schedDate, schedFood, schedComment);
     this.medsData.send(name,rxDate, rx, nextRx);
   }
-
 }
