@@ -1,18 +1,35 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header *ngIf="verifyFailed">
+  <ion-toolbar color="danger">
     <ion-buttons slot="start">
         <ion-back-button defaultHref="tabs/reptiles"></ion-back-button>
     </ion-buttons>   
     <ion-title>Admin Authentication</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-header *ngIf="!verifyFailed">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="tabs/reptiles"></ion-back-button>
+      </ion-buttons>   
+      <ion-title>Admin Authentication</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content padding>
-  <p>This section needs to run through a username and password verification</p>
     <ion-card>
       <ion-card-header>
         Login
       </ion-card-header>
+      <ion-grid *ngIf="verifyFailed">
+        <ion-col id="verifyFailed">
+          <ion-row>
+              <h2>Login Failed</h2>
+          </ion-row>
+          <ion-row>
+              <p>Username or Password is incorrect</p>
+          </ion-row>
+        </ion-col>
+      </ion-grid>
       <ion-card-content>
         <form (ngSubmit)="authenticate()">
           <h2>Basic Information</h2>

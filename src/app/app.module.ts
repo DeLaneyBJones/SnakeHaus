@@ -16,6 +16,7 @@ import { FeedData } from './providers/feed-data';
 import { FeedSchedule } from './providers/feed-schedule';
 import { MedsData} from './providers/meds-data';
 import { ObservationData } from './providers/observations-data';
+import { Verification } from './providers/login-data';
 
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
@@ -32,6 +33,7 @@ import { ScheduleModalPage } from './schedule-modal/schedule-modal.page';
     ReptileData,
     FeedData,
     FeedSchedule,
+    Verification,
     MedsData, ObservationData, NgForm
   ],
   bootstrap: [AppComponent]

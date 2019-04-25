@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-
+import { Verification } from '../providers/login-data';
 
 @Component({
   selector: 'app-authentication',
@@ -10,18 +10,29 @@ import { NavController } from '@ionic/angular';
 })
 export class AuthenticationPage implements OnInit {
 
-  constructor(public router: Router, public navCtrl: NavController) { }
+  verifyFailed = false;
+
+  constructor(public router: Router, public navCtrl: NavController, public verify: Verification) { }
 
   ngOnInit() {
   }
 
   authenticate()
   {
-    //This is where I need to verify the data...
-    var username: string = document.getElementById("name").nodeValue;
-    console.log(username);
-    //I need to add the actual verification here before navigation
-    let url = './tabs/settings2/';
-    this.router.navigate([url]); 
+    var form = document.querySelector('form')!;
+    var data = new FormData(form);
+    var username: string = data.get('name') as string;
+    var password: string = data.get('pass') as string;
+
+    if(this.verify.login(username, password))
+    {
+      this.verifyFailed = false;
+      let url = './tabs/settings2/';
+      this.router.navigate([url]); 
+    }
+    else
+    {
+      this.verifyFailed = true;
+    }
   }
 }
