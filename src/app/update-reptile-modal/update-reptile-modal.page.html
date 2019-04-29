@@ -6,7 +6,6 @@
   </ion-header>
   
   <ion-content>
-    <p>This section needs to send the selected data to update the database</p>
     <ion-list *ngIf="hasReptile == false">
       <ion-toolbar color='primary' *ngIf="hasReptile == false">
         <ion-searchbar (ionInput)="getReptiles($event)" (ionClear)="resetList($event)">

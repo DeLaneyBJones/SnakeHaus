@@ -27,12 +27,15 @@ export class ScheduleModalPage implements OnInit {
   thawing: boolean;
   hasThawing: boolean;
 
-  constructor(public medsData2: MedsData, public feedData2: FeedData, public feedSchedule2: FeedSchedule, public modalController: ModalController) { 
+  constructor(public medsData2: MedsData, public feedData2: FeedData, public feedSchedule2: FeedSchedule, public modalController: ModalController) {
+    this.callThisFunction(); 
   }
 
   callThisFunction() {
-    this.testingDate = "2019-04-09";
-    this.testingDateTomorrow = "2019-04-10";
+    var date = new Date();
+    this.testingDate = date.toISOString();
+    date.setDate(date.getDate() + 1);
+    this.testingDateTomorrow = date.toISOString();
     
     this.medsData = this.medsData2.getAllMedsOnDate(this.testingDate);
     if(this.medsData.length > 0)
@@ -65,6 +68,7 @@ export class ScheduleModalPage implements OnInit {
   }
 
   ngOnInit() {
+    this.callThisFunction();
   }
 
   async dismiss(){

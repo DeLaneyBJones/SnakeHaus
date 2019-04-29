@@ -6,38 +6,47 @@
 </ion-header>
     
 <ion-content padding>
-  <p>This section just needs the fake dates swapped out for todays date and tomorrows date</p>
-  <h1 (click)="callThisFunction()">Working on figuring this part out right now</h1>
-  <h2 (click)="this.medsSched = !this.medsSched">Medications</h2>
-  <ion-virtual-scroll [items]="medsData" [headerFn]="customHeaderFn" *ngIf="medsSched">
-    <ion-item *virtualItem="let snake" detail-push>
-      <p>{{snake.SnakeName}}</p>
-      <p>{{snake.Rx}</p>
-    </ion-item>
-  </ion-virtual-scroll>
-  <ion-item *ngIf="!hasMedsSched && medsSched">
-    <p>No reptiles require medications today</p>
-  </ion-item>
-
-  <h2 (click)="this.feedSched = !this.feedSched">Feeding Schedule</h2>
-  <ion-virtual-scroll [items]="feedData" [headerFn]="customHeaderFn" *ngIf="feedSched">
-    <ion-item *virtualItem="let snake" detail-push>
-      <p>{{snake.SnakeName}}</p>
-      <p>{{snake.Food}}</p>
-    </ion-item>
-  </ion-virtual-scroll>
-  <ion-item *ngIf="!hasFeedSched && feedSched">
-    <p>No reptiles require feeding today</p>
-  </ion-item>
-
-  <h2 (click)="this.thawing = !this.thawing">Thawing notes</h2>
-  <ion-virtual-scroll [items]="feedDataTomorrow" [headerFn]="customHeaderFn" *ngIf="thawing">
-    <ion-item *virtualItem="let snake" detail-push>
-      <p>{{snake.SnakeName}}</p>
-      <p>{{snake.Food}}</p>
-    </ion-item>
-  </ion-virtual-scroll>
-  <ion-item *ngIf="!hasThawing && thawing">
-    <p>There is nothing to thaw for tomorrow</p>
-  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      Reptile Schedules
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <h2 (click)="this.medsSched = !this.medsSched">Medications</h2>
+        <ion-virtual-scroll [items]="medsData" [headerFn]="customHeaderFn" *ngIf="medsSched">
+          <ion-item *virtualItem="let snake" detail-push>
+            <p>{{snake.SnakeName}}</p>
+            <p>{{snake.Rx}</p>
+          </ion-item>
+        </ion-virtual-scroll>
+        <ion-item *ngIf="!hasMedsSched && medsSched">
+          <p>No reptiles require medications today</p>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <h2 (click)="this.feedSched = !this.feedSched">Feeding Schedule</h2>
+        <ion-virtual-scroll [items]="feedData" [headerFn]="customHeaderFn" *ngIf="feedSched">
+          <ion-item *virtualItem="let snake" detail-push>
+            <p>{{snake.SnakeName}}</p>
+            <p>{{snake.Food}}</p>
+          </ion-item>
+        </ion-virtual-scroll>
+        <ion-item *ngIf="!hasFeedSched && feedSched">
+          <p>No reptiles require feeding today</p>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <h2 (click)="this.thawing = !this.thawing">Thawing notes</h2>
+        <ion-virtual-scroll [items]="feedDataTomorrow" [headerFn]="customHeaderFn" *ngIf="thawing">
+          <ion-item *virtualItem="let snake" detail-push>
+            <p>{{snake.SnakeName}}</p>
+            <p>{{snake.Food}}</p>
+          </ion-item>
+        </ion-virtual-scroll>
+        <ion-item *ngIf="!hasThawing && thawing">
+          <p>There is nothing to thaw for tomorrow</p>
+        </ion-item>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
