@@ -13,11 +13,11 @@ export class ReptileData {
             return Promise.resolve(this.data);
         }
         return new Promise(resolve => {
-            this.http.get('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/snake?order=SnakeName')
+            //this.http.get('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/snake?order=SnakeName')
+            this.http.get('http://isoptera.lcsc.edu/jpbeboer/reptiles/api.php/records/snake?order=SnakeName')
             .map(res => res.json())
             .subscribe(data => {
                 this.data = data.records;
-                //I should add an alphabatizer here...
                 resolve(this.data);
             });
         });
@@ -43,6 +43,7 @@ export class ReptileData {
             "Adopter" : adopter,
             "AdoptionDate" : adoptionDate
         };
+        
         console.log(body);
         if(this.data)
         {

@@ -13,7 +13,8 @@ export class MedsData {
             return Promise.resolve(this.data);
         }
         return new Promise(resolve => {
-            this.http.get('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/meds')
+            //this.http.get('http://bonsai.lcsc.edu/dbjones2518/reptiles/api.php/records/meds')
+            this.http.get('http://isoptera.lcsc.edu/jpbeboer/reptiles/api.php/records/meds')
             .map(res => res.json())
             .subscribe(data => {
                 this.data = data.records;
